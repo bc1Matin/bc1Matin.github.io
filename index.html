@@ -1,0 +1,828 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Matin Asadpour | Blockchain Developer & Researcher</title>
+  <meta name="description" content="Personal portfolio and resume of Matin Asadpour (bc1Matin) - Dedicated Blockchain Developer & Researcher specializing in Arweave/AO Permaweb, Ethereum EVM, and TypeScript." />
+  <link rel="icon" type="image/png" href="./avatar.png" />
+
+  <!-- Tailwind CSS CDN with dark mode class configuration -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'system-ui', '-apple-system', 'sans-serif'],
+            mono: ['JetBrains Mono', 'Fira Code', 'monospace'],
+          },
+          colors: {
+            brand: {
+              50: '#f0f9ff',
+              100: '#e0f2fe',
+              500: '#0284c7',
+              600: '#0369a1',
+              700: '#075985',
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Google Fonts: Inter & JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    /* Custom Print Styles for clean 1-2 page executive resume */
+    @media print {
+      body {
+        background-color: #ffffff !important;
+        color: #111827 !important;
+        font-size: 10pt !important;
+      }
+      .no-print {
+        display: none !important;
+      }
+      .print-shadow-none {
+        box-shadow: none !important;
+        border: 1px solid #e5e7eb !important;
+      }
+      .page-break-inside-avoid {
+        page-break-inside: avoid;
+      }
+      a {
+        text-decoration: none !important;
+        color: inherit !important;
+      }
+    }
+
+    /* Grid background pattern */
+    .bg-grid-pattern {
+      background-size: 28px 28px;
+      background-image: radial-gradient(circle, rgba(148, 163, 184, 0.15) 1px, transparent 1px);
+    }
+    .dark .bg-grid-pattern {
+      background-image: radial-gradient(circle, rgba(255, 255, 255, 0.08) 1px, transparent 1px);
+    }
+
+    /* Hand-drawn squiggly border divider */
+    .squiggly-divider {
+      background-image: url("data:image/svg+xml,%3Csvg width='40' height='10' viewBox='0 0 40 10' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 5 Q 10 0, 20 5 T 40 5' fill='none' stroke='%2394a3b8' stroke-width='1.6' stroke-linecap='round'/%3E%3C/svg%3E");
+      background-repeat: repeat-x;
+    }
+    .dark .squiggly-divider {
+      background-image: url("data:image/svg+xml,%3Csvg width='40' height='10' viewBox='0 0 40 10' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 5 Q 10 0, 20 5 T 40 5' fill='none' stroke='%23475569' stroke-width='1.6' stroke-linecap='round'/%3E%3C/svg%3E");
+    }
+
+    /* Pulse animation for EVM Bridge */
+    @keyframes pulse-bridge {
+      0%, 100% { border-color: rgba(245, 158, 11, 0.4); }
+      50% { border-color: rgba(245, 158, 11, 0.95); }
+    }
+    .bridge-active {
+      animation: pulse-bridge 2.5s ease-in-out infinite;
+    }
+  </style>
+</head>
+<body class="bg-slate-50 text-slate-800 dark:bg-slate-950 dark:text-slate-100 min-h-screen transition-colors duration-200 antialiased font-sans bg-grid-pattern">
+
+  <!-- ========================================================
+       TOP NAVIGATION BAR
+       ======================================================== -->
+  <header class="sticky top-0 z-50 backdrop-blur-md bg-white/85 dark:bg-slate-900/85 border-b border-slate-200/80 dark:border-slate-800/80 no-print">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
+      <a href="#" class="flex items-center gap-2.5 font-mono font-bold text-lg text-slate-900 dark:text-white tracking-tight group">
+        <span class="w-8 h-8 rounded-lg bg-indigo-600 dark:bg-indigo-500 text-white flex items-center justify-center font-mono text-xs shadow-md group-hover:scale-105 transition-transform">
+          bc1
+        </span>
+        <span>bc1<span class="text-indigo-600 dark:text-indigo-400">Matin</span></span>
+      </a>
+
+      <!-- Quick Anchor Links -->
+      <nav class="hidden md:flex items-center gap-6 text-sm font-medium text-slate-600 dark:text-slate-300">
+        <a href="#about" class="hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">About</a>
+        <a href="#tech-matrix" class="hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors flex items-center gap-1.5">
+          <svg class="w-4 h-4 text-indigo-500" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"/></svg>
+          Tech Matrix
+        </a>
+        <a href="#projects" class="hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">Projects</a>
+        <a href="#experience" class="hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">Experience</a>
+        <a href="#education" class="hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">Education</a>
+        <a href="#contact" class="hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">Contact</a>
+      </nav>
+
+      <!-- Action Utilities: PDF Download & Theme Toggle -->
+      <div class="flex items-center gap-3">
+        <!-- Print / Save PDF Button -->
+        <button onclick="window.print()" class="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-200 border border-slate-300/80 dark:border-slate-700 transition-all shadow-sm active:scale-95" title="Print or save resume as PDF">
+          <svg class="w-4 h-4 text-indigo-500" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
+          <span class="hidden sm:inline">Resume PDF</span>
+        </button>
+
+        <!-- Dark / Light Mode Toggle Button -->
+        <button id="theme-toggle" type="button" class="w-9 h-9 flex items-center justify-center rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700 border border-slate-300/80 dark:border-slate-700 transition-colors" aria-label="Toggle theme">
+          <!-- Moon Icon (Dark Mode Trigger) -->
+          <svg id="theme-toggle-dark-icon" class="w-4 h-4 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/></svg>
+          <!-- Sun Icon (Light Mode Trigger) -->
+          <svg id="theme-toggle-light-icon" class="w-4 h-4 hidden text-amber-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 9H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ========================================================
+       MAIN CONTENT CONTAINER
+       ======================================================== -->
+  <main class="max-w-5xl mx-auto px-4 sm:px-6 py-8 sm:py-12 space-y-12">
+
+    <!-- ========================================================
+         TOP SECTION: HERO & PERSONAL PROFILE ("Top Section: ???")
+         ======================================================== -->
+    <section id="about" class="relative rounded-2xl bg-white/90 dark:bg-slate-900/90 border border-slate-200/90 dark:border-slate-800/90 p-6 sm:p-10 shadow-sm backdrop-blur-sm print-shadow-none">
+      
+      <!-- Top Status & Location Bar -->
+      <div class="flex flex-wrap items-center justify-between gap-3 mb-6">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-medium bg-emerald-50 dark:bg-emerald-950/60 text-emerald-700 dark:text-emerald-400 border border-emerald-200 dark:border-emerald-800">
+          <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+          Open to Blockchain Development & Research Collaborations
+        </div>
+        <div class="flex items-center gap-4 text-xs font-mono text-slate-500 dark:text-slate-400">
+          <span class="flex items-center gap-1.5">
+            <svg class="w-3.5 h-3.5 text-indigo-500" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 9l3 3-3 3m5 0h3M5 20h14a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+            Omarchy (Arch Linux)
+          </span>
+          <span class="flex items-center gap-1.5">
+            <svg class="w-3.5 h-3.5 text-rose-500" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+            Tehran, Iran
+          </span>
+        </div>
+      </div>
+
+      <!-- Main Profile Header -->
+      <div class="flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
+        <div class="space-y-3">
+          <div class="flex items-center gap-3">
+            <h1 class="text-3xl sm:text-5xl font-extrabold tracking-tight text-slate-900 dark:text-white">
+              Matin Asadpour
+            </h1>
+            <span class="text-xs font-mono px-2 py-0.5 rounded bg-indigo-100 dark:bg-indigo-950 text-indigo-700 dark:text-indigo-300 font-semibold">
+              bc1Matin
+            </span>
+          </div>
+          <p class="text-lg sm:text-xl font-medium text-indigo-600 dark:text-indigo-400">
+            Dedicated Blockchain Developer & Researcher
+          </p>
+          <p class="text-slate-600 dark:text-slate-300 max-w-2xl text-sm sm:text-base leading-relaxed">
+            Blending technical rigor with a philosophical inquiry into decentralization and digital autonomy. Holding an 
+            <strong class="text-slate-900 dark:text-white font-semibold">M.A. in Philosophy</strong> and a 
+            <strong class="text-slate-900 dark:text-white font-semibold">B.Sc. in Electrical Engineering</strong>, I develop across the 
+            <strong class="text-slate-900 dark:text-white font-semibold">PermaWeb (Arweave, AO, HyperBEAM)</strong>, 
+            <strong class="text-slate-900 dark:text-white font-semibold">Ethereum (EVM & Solidity)</strong>, and 
+            high-performance <strong class="text-slate-900 dark:text-white font-semibold">TypeScript & NestJS</strong> backends.
+          </p>
+        </div>
+
+        <!-- Local Avatar with Fallback -->
+        <div class="shrink-0 self-center md:self-auto">
+          <div class="relative w-28 h-28 sm:w-32 sm:h-32 rounded-2xl p-[3px] bg-gradient-to-tr from-indigo-600 via-sky-500 to-emerald-400 shadow-xl">
+            <img src="./avatar.png" alt="Matin Asadpour" class="w-full h-full object-cover rounded-2xl bg-slate-900" onerror="this.onerror=null; this.src='https://avatars.githubusercontent.com/u/63342108?v=4';" />
+            <div class="absolute -bottom-2 -right-2 px-2 py-0.5 bg-slate-900 border border-slate-700 rounded-md text-[10px] font-mono text-emerald-400 font-bold shadow-md">
+              bc1
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Quick Social & Contact Badges (Clean Inline SVGs) -->
+      <div class="mt-8 pt-6 border-t border-slate-200/80 dark:border-slate-800/80 flex flex-wrap items-center justify-between gap-4">
+        <div class="flex flex-wrap items-center gap-2 sm:gap-2.5">
+          <!-- Email (Proton) -->
+          <a href="mailto:matinasadpour@proton.me" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-medium bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-800 dark:text-slate-200 transition-colors border border-slate-200 dark:border-slate-700">
+            <svg class="w-3.5 h-3.5 text-indigo-500" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+            <span>matinasadpour@proton.me</span>
+          </a>
+          <!-- GitHub -->
+          <a href="https://github.com/bc1Matin" target="_blank" rel="noopener" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-medium bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-800 dark:text-slate-200 transition-colors border border-slate-200 dark:border-slate-700">
+            <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+            <span>GitHub</span>
+          </a>
+          <!-- LinkedIn -->
+          <a href="https://linkedin.com/in/MatinAsadpour" target="_blank" rel="noopener" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-medium bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-800 dark:text-slate-200 transition-colors border border-slate-200 dark:border-slate-700">
+            <svg class="w-3.5 h-3.5 fill-[#0077b5]" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+            <span>LinkedIn</span>
+          </a>
+          <!-- X / Twitter -->
+          <a href="https://x.com/bc1Matin" target="_blank" rel="noopener" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-medium bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-800 dark:text-slate-200 transition-colors border border-slate-200 dark:border-slate-700">
+            <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+            <span>@bc1Matin</span>
+          </a>
+          <!-- Bluesky -->
+          <a href="https://bsky.app/profile/bc1Matin" target="_blank" rel="noopener" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-medium bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-800 dark:text-slate-200 transition-colors border border-slate-200 dark:border-slate-700">
+            <svg class="w-3.5 h-3.5 fill-[#0285FF]" viewBox="0 0 568 501"><path d="M123.12 35.78C180.84 79.1 234.37 155.63 284 218.6c49.63-62.97 103.16-139.5 160.88-182.82C486.44 4.6 544.77-16.7 562.9 14.15c21.2 36.08 1.94 135.22-30.82 201.2-46.6 93.85-132.8 126.96-180.7 131.55 76.5 14.7 135.5 59.9 119.5 106.1-23.7 68.4-142.3 47.9-186.9-39.7C284 413.3 284 413.3 284 413.3s0 0-.02-.02c-44.6 87.6-163.2 108.1-186.9 39.7-16-46.2 43-91.4 119.5-106.1-47.9-4.59-134.1-37.7-180.7-131.55C3.12 149.37-16.14 50.23 5.06 14.15 23.2-16.7 81.53 4.6 123.12 35.78z"/></svg>
+            <span>Bluesky</span>
+          </a>
+          <!-- Instagram -->
+          <a href="https://instagram.com/bc1Matin" target="_blank" rel="noopener" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-medium bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-800 dark:text-slate-200 transition-colors border border-slate-200 dark:border-slate-700">
+            <svg class="w-3.5 h-3.5 fill-[#E4405F]" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+            <span>Instagram</span>
+          </a>
+        </div>
+
+        <!-- Direct Action Buttons -->
+        <div class="flex items-center gap-3 no-print">
+          <a href="#contact" class="px-4 py-2 rounded-lg text-xs font-semibold bg-indigo-600 hover:bg-indigo-700 text-white transition-all shadow-sm hover:shadow-indigo-500/25">
+            Connect
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================
+         DECORATIVE SQUIGGLY / HAND-DRAWN DIVIDER
+         (Matching the rough dividing line in your wireframe)
+         ======================================================== -->
+    <div class="w-full h-4 squiggly-divider my-2 opacity-80"></div>
+
+    <!-- ========================================================
+         THE TECHNICAL MATRIX (DIRECTLY FROM YOUR WIREFRAME)
+         ======================================================== -->
+    <section id="tech-matrix" class="space-y-6">
+      <div class="flex items-center justify-between">
+        <div>
+          <h2 class="text-2xl font-bold tracking-tight text-slate-900 dark:text-white flex items-center gap-2 font-mono">
+            <span class="text-indigo-600 dark:text-indigo-400">#</span> Technical Architecture
+          </h2>
+          <p class="text-xs sm:text-sm text-slate-500 dark:text-slate-400 mt-1">
+            Systematic blueprint of development environment, runtimes, protocols, and tooling matrix.
+          </p>
+        </div>
+      </div>
+
+      <!-- DEV ENVIRONMENT (Full-Width Card from Wireframe) -->
+      <div class="rounded-xl bg-white dark:bg-slate-900 border-2 border-slate-300 dark:border-slate-800 p-5 sm:p-6 shadow-sm print-shadow-none">
+        <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-slate-200 dark:border-slate-800/80 pb-4 mb-4">
+          <div class="flex items-center gap-2">
+            <span class="p-1.5 rounded-md bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 font-mono text-xs font-bold uppercase tracking-wider">
+              Dev Envirment
+            </span>
+            <span class="text-sm font-semibold text-slate-800 dark:text-slate-200 font-mono">
+              OS: <span class="text-indigo-600 dark:text-indigo-400 font-bold">Omarchy (Arch Linux)</span>
+            </span>
+          </div>
+
+          <!-- AI Assistant Integration Badge -->
+          <div class="flex items-center gap-2 text-xs font-mono bg-indigo-50 dark:bg-indigo-950/60 text-indigo-700 dark:text-indigo-300 px-3 py-1.5 rounded-lg border border-indigo-200 dark:border-indigo-800">
+            <svg class="w-3.5 h-3.5 text-indigo-500" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"/></svg>
+            <span class="font-semibold">AI:</span> Gemini, Antigravity, Grok
+          </div>
+        </div>
+
+        <!-- Dev Environment Toolset Badges -->
+        <div class="flex flex-wrap items-center gap-2.5 sm:gap-4">
+          <div class="inline-flex items-center gap-2 px-3 py-2 rounded-lg bg-slate-100 dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700 text-xs font-mono font-medium text-slate-700 dark:text-slate-200">
+            <svg class="w-4 h-4 text-orange-500" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"/></svg>
+            Git
+          </div>
+          <div class="inline-flex items-center gap-2 px-3 py-2 rounded-lg bg-slate-100 dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700 text-xs font-mono font-medium text-slate-700 dark:text-slate-200">
+            <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+            Github
+          </div>
+          <div class="inline-flex items-center gap-2 px-3 py-2 rounded-lg bg-slate-100 dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700 text-xs font-mono font-medium text-slate-700 dark:text-slate-200">
+            <svg class="w-4 h-4 text-sky-500" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"/></svg>
+            Docker
+          </div>
+          <div class="inline-flex items-center gap-2 px-3 py-2 rounded-lg bg-slate-100 dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700 text-xs font-mono font-medium text-slate-700 dark:text-slate-200">
+            <svg class="w-4 h-4 text-emerald-500" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"/></svg>
+            Nvim
+          </div>
+          <div class="inline-flex items-center gap-2 px-3 py-2 rounded-lg bg-slate-100 dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700 text-xs font-mono font-medium text-slate-700 dark:text-slate-200">
+            <svg class="w-4 h-4 text-amber-500" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"/></svg>
+            Tmux / Herdr
+          </div>
+        </div>
+      </div>
+
+      <!-- TWO COLUMN LAYOUT: JS ECOSYSTEM (Left) & BLOCKCHAIN (Right) -->
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 relative">
+
+        <!-- ====================================================
+             LEFT COLUMN: JS / TYPESCRIPT ECOSYSTEM
+             ==================================================== -->
+        <div class="lg:col-span-5 rounded-xl bg-white dark:bg-slate-900 border-2 border-slate-300 dark:border-slate-800 p-5 sm:p-6 shadow-sm flex flex-col justify-between print-shadow-none">
+          <div>
+            <div class="flex items-center justify-between pb-3 border-b border-slate-200 dark:border-slate-800 mb-4">
+              <span class="text-base font-bold font-mono text-slate-900 dark:text-white uppercase tracking-wider flex items-center gap-2">
+                <span class="w-3 h-3 rounded-full bg-amber-400"></span> JS
+              </span>
+              <span class="text-xs font-mono text-slate-500 dark:text-slate-400">Web & Backend</span>
+            </div>
+
+            <div class="space-y-4">
+              <!-- Row 1: Languages -->
+              <div class="p-3.5 rounded-lg bg-slate-50 dark:bg-slate-800/60 border border-slate-200/90 dark:border-slate-700/80">
+                <div class="text-[11px] font-mono text-slate-400 uppercase tracking-wider mb-2">Languages</div>
+                <div class="grid grid-cols-2 gap-2 text-center">
+                  <div class="py-2 px-3 rounded-md bg-amber-50 dark:bg-amber-950/40 border border-amber-200 dark:border-amber-800/80 text-amber-800 dark:text-amber-300 font-mono text-xs font-bold flex items-center justify-center gap-1.5">
+                    <span class="w-2 h-2 rounded-full bg-amber-500"></span> JavaScript
+                  </div>
+                  <div class="py-2 px-3 rounded-md bg-blue-50 dark:bg-blue-950/40 border border-blue-200 dark:border-blue-800/80 text-blue-800 dark:text-blue-300 font-mono text-xs font-bold flex items-center justify-center gap-1.5">
+                    <span class="w-2 h-2 rounded-full bg-blue-500"></span> TypeScript
+                  </div>
+                </div>
+              </div>
+
+              <!-- Dotted Divider matching wireframe -->
+              <div class="border-t border-dashed border-slate-300 dark:border-slate-700 my-2"></div>
+
+              <!-- Row 2: Runtimes -->
+              <div class="p-3.5 rounded-lg bg-slate-50 dark:bg-slate-800/60 border border-slate-200/90 dark:border-slate-700/80">
+                <div class="text-[11px] font-mono text-slate-400 uppercase tracking-wider mb-2">Runtimes</div>
+                <div class="grid grid-cols-2 gap-2">
+                  <!-- Node.js + Deno -->
+                  <div class="py-2 px-3 rounded-md bg-emerald-50 dark:bg-emerald-950/40 border border-emerald-200 dark:border-emerald-800/80 text-emerald-800 dark:text-emerald-300 font-mono text-xs text-center">
+                    <div class="font-bold flex items-center justify-center gap-1.5">
+                      <svg class="w-3.5 h-3.5 text-emerald-600" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2m-2-4h.01M17 16h.01"/></svg>
+                      Nodejs
+                    </div>
+                    <div class="text-[10px] text-emerald-600 dark:text-emerald-400 opacity-80 mt-0.5">Deno</div>
+                  </div>
+                  <!-- Bun -->
+                  <div class="py-2 px-3 rounded-md bg-rose-50 dark:bg-rose-950/40 border border-rose-200 dark:border-rose-800/80 text-rose-800 dark:text-rose-300 font-mono text-xs font-bold flex items-center justify-center gap-1.5">
+                    <svg class="w-3.5 h-3.5 text-rose-500" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+                    Bun
+                  </div>
+                </div>
+              </div>
+
+              <!-- Dotted Divider matching wireframe -->
+              <div class="border-t border-dashed border-slate-300 dark:border-slate-700 my-2"></div>
+
+              <!-- Row 3: NestJS & Hardhat (Bridged) -->
+              <div class="p-3.5 rounded-lg bg-slate-50 dark:bg-slate-800/60 border border-slate-200/90 dark:border-slate-700/80">
+                <div class="text-[11px] font-mono text-slate-400 uppercase tracking-wider mb-2">Framework & EVM Tooling</div>
+                <div class="grid grid-cols-2 gap-2">
+                  <!-- NestJS -->
+                  <div class="py-2.5 px-3 rounded-md bg-red-50 dark:bg-red-950/40 border border-red-200 dark:border-red-800/80 text-red-800 dark:text-red-300 font-mono text-xs font-bold flex items-center justify-center gap-1.5">
+                    <svg class="w-3.5 h-3.5 text-red-500" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"/></svg>
+                    NestJS
+                  </div>
+
+                  <!-- Hardhat (Bridged with dotted line to Solidity) -->
+                  <div class="py-2.5 px-3 rounded-md bg-amber-50 dark:bg-amber-950/50 border-2 border-dashed border-amber-400 dark:border-amber-500 text-amber-900 dark:text-amber-300 font-mono text-xs font-bold flex flex-col items-center justify-center relative bridge-active" title="Directly linked to Solidity smart contract testing and compilation">
+                    <div class="flex items-center gap-1">
+                      <svg class="w-3.5 h-3.5 text-amber-600" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/></svg>
+                      Hardhat
+                    </div>
+                    <span class="text-[9px] text-amber-700 dark:text-amber-400 font-normal">➔ Solidity Link</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800/80 text-[11px] font-mono text-slate-500 dark:text-slate-400">
+            Modern asynchronous JS/TS engines, microservices, and Web3 RPC libraries.
+          </div>
+        </div>
+
+        <!-- ====================================================
+             RIGHT COLUMN: BLOCKCHAIN ECOSYSTEM
+             ==================================================== -->
+        <div class="lg:col-span-7 rounded-xl bg-white dark:bg-slate-900 border-2 border-slate-300 dark:border-slate-800 p-5 sm:p-6 shadow-sm flex flex-col justify-between print-shadow-none">
+          <div>
+            <div class="flex items-center justify-between pb-3 border-b border-slate-200 dark:border-slate-800 mb-4">
+              <span class="text-base font-bold font-mono text-slate-900 dark:text-white uppercase tracking-wider flex items-center gap-2">
+                <span class="w-3 h-3 rounded-full bg-indigo-500"></span> BlockChain
+              </span>
+              <span class="text-xs font-mono text-slate-500 dark:text-slate-400">Decentralized Systems</span>
+            </div>
+
+            <div class="space-y-4">
+
+              <!-- 1. PermaWeb: Areave, AO -->
+              <div class="p-4 rounded-lg bg-slate-50 dark:bg-slate-800/60 border border-slate-200/90 dark:border-slate-700/80">
+                <div class="flex items-center justify-between mb-3">
+                  <div class="text-xs font-bold font-mono text-slate-800 dark:text-slate-200 flex items-center gap-2">
+                    <svg class="w-4 h-4 text-emerald-500" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18.364 5.636a9 9 0 010 12.728m0 0l-2.829-2.829m2.829 2.829L21 21M15.536 8.464a5 5 0 010 7.072m0 0l-2.829-2.829m-4.243 4.243a5 5 0 01-7.072 0m0 0l2.829-2.829m-2.829 2.829L3 21m6.364-15.364a9 9 0 000 12.728"/></svg>
+                    PermaWeb: Areave, AO
+                  </div>
+                  <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-emerald-100 dark:bg-emerald-950 text-emerald-700 dark:text-emerald-300 border border-emerald-300 dark:border-emerald-800">
+                    Permaweb & Actor Compute
+                  </span>
+                </div>
+                <!-- Items: Lua, Erlang, HyperBEAM, AR.io, WAO -->
+                <div class="grid grid-cols-2 sm:grid-cols-3 gap-2 text-xs font-mono">
+                  <div class="py-1.5 px-2.5 rounded bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700/80 text-slate-800 dark:text-slate-200 flex items-center gap-1.5">
+                    <span class="w-1.5 h-1.5 rounded-full bg-blue-500"></span> Lua
+                  </div>
+                  <div class="py-1.5 px-2.5 rounded bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700/80 text-slate-800 dark:text-slate-200 flex items-center gap-1.5">
+                    <span class="w-1.5 h-1.5 rounded-full bg-rose-500"></span> Erlang
+                  </div>
+                  <div class="py-1.5 px-2.5 rounded bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700/80 text-slate-800 dark:text-slate-200 flex items-center gap-1.5">
+                    <span class="w-1.5 h-1.5 rounded-full bg-amber-500"></span> HyperBEAM
+                  </div>
+                  <div class="py-1.5 px-2.5 rounded bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700/80 text-slate-800 dark:text-slate-200 flex items-center gap-1.5">
+                    <span class="w-1.5 h-1.5 rounded-full bg-indigo-500"></span> AR.io
+                  </div>
+                  <div class="py-1.5 px-2.5 rounded bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700/80 text-slate-800 dark:text-slate-200 flex items-center gap-1.5">
+                    <span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span> WAO
+                  </div>
+                </div>
+              </div>
+
+              <!-- 2. Bitcoin -->
+              <div class="p-4 rounded-lg bg-slate-50 dark:bg-slate-800/60 border border-slate-200/90 dark:border-slate-700/80">
+                <div class="flex items-center justify-between mb-2">
+                  <div class="text-xs font-bold font-mono text-slate-800 dark:text-slate-200 flex items-center gap-2">
+                    <span class="w-4 h-4 rounded-full bg-amber-500 text-white font-bold flex items-center justify-center text-[10px] leading-none">₿</span>
+                    Bitcoin
+                  </div>
+                  <span class="text-[10px] font-mono text-slate-400">Layer 1 & Protocols</span>
+                </div>
+                <div class="flex flex-wrap items-center gap-2 text-xs font-mono">
+                  <span class="py-1.5 px-2.5 rounded bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300">
+                    Bitcoin Mechanics & Script
+                  </span>
+                  <span class="py-1.5 px-2.5 rounded bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300">
+                    Lightning Network
+                  </span>
+                  <span class="py-1.5 px-2.5 rounded bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300">
+                    Ordinals & Decentralized Consensus
+                  </span>
+                </div>
+              </div>
+
+              <!-- 3. Ethereum (EVM) -->
+              <div class="p-4 rounded-lg bg-slate-50 dark:bg-slate-800/60 border border-slate-200/90 dark:border-slate-700/80 relative">
+                <div class="flex items-center justify-between mb-3">
+                  <div class="text-xs font-bold font-mono text-slate-800 dark:text-slate-200 flex items-center gap-2">
+                    <svg class="w-4 h-4 text-indigo-500" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"/></svg>
+                    Ethereum (EVM)
+                  </div>
+                  <span class="text-[10px] font-mono text-indigo-600 dark:text-indigo-400 font-semibold">
+                    Smart Contracts
+                  </span>
+                </div>
+
+                <!-- Solidity Box (Connected to Hardhat in wireframe) -->
+                <div class="p-3 rounded-lg bg-indigo-50/70 dark:bg-indigo-950/40 border-2 border-dashed border-indigo-400 dark:border-indigo-500 flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+                  <div class="flex items-center gap-2">
+                    <span class="w-3 h-3 rounded-full bg-indigo-600"></span>
+                    <span class="font-mono text-xs font-bold text-indigo-950 dark:text-indigo-200">
+                      Solidity
+                    </span>
+                    <span class="text-[11px] font-mono text-slate-500 dark:text-slate-400">
+                      (ERC-20, ERC-721, Gas Optimization)
+                    </span>
+                  </div>
+                  <div class="inline-flex items-center gap-1.5 text-[10px] font-mono text-amber-700 dark:text-amber-400 bg-amber-100/70 dark:bg-amber-950/60 px-2 py-0.5 rounded border border-amber-300 dark:border-amber-800">
+                    <svg class="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"/></svg>
+                    Bound to Hardhat Workflow
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+          <div class="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800/80 text-[11px] font-mono text-slate-500 dark:text-slate-400">
+            Permanent data storage, distributed actor compute on AO, and verifiable Ethereum contracts.
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ========================================================
+         FEATURED PROJECTS SECTION (Actual bc1Matin Repositories)
+         ======================================================== -->
+    <section id="projects" class="page-break-inside-avoid space-y-6 pt-4">
+      <div>
+        <h2 class="text-2xl font-bold tracking-tight text-slate-900 dark:text-white flex items-center gap-2 font-mono">
+          <span class="text-indigo-600 dark:text-indigo-400">#</span> Featured Repositories & Work
+        </h2>
+        <p class="text-xs sm:text-sm text-slate-500 dark:text-slate-400 mt-1">
+          Open-source blockchain protocols, analytical tools, and distributed applications.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+
+        <!-- Project 1: HyperBEAM -->
+        <div class="rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 p-5 flex flex-col justify-between shadow-sm hover:border-emerald-500/50 transition-colors print-shadow-none">
+          <div>
+            <div class="flex items-center justify-between mb-3">
+              <span class="p-2 rounded-lg bg-emerald-50 dark:bg-emerald-950/60 text-emerald-600 dark:text-emerald-400">
+                <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"/></svg>
+              </span>
+              <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400">PermaWeb / AO</span>
+            </div>
+            <h3 class="text-base font-bold text-slate-900 dark:text-white mb-2">HyperBEAM</h3>
+            <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed mb-4">
+              Decentralized infrastructure exploring HyperBEAM, Erlang runtime mechanics, and hyper-parallel actor computation for Arweave and the AO ecosystem.
+            </p>
+          </div>
+          <div class="space-y-3 pt-3 border-t border-slate-100 dark:border-slate-800">
+            <div class="flex flex-wrap gap-1 font-mono text-[10px] text-slate-500 dark:text-slate-400">
+              <span class="bg-slate-100 dark:bg-slate-800 px-1.5 py-0.5 rounded">Erlang</span>
+              <span class="bg-slate-100 dark:bg-slate-800 px-1.5 py-0.5 rounded">AO / Arweave</span>
+              <span class="bg-slate-100 dark:bg-slate-800 px-1.5 py-0.5 rounded">Lua</span>
+            </div>
+            <div class="flex items-center justify-between text-xs font-medium no-print">
+              <a href="https://github.com/bc1Matin/HyperBEAM" target="_blank" rel="noopener" class="text-indigo-600 dark:text-indigo-400 hover:underline flex items-center gap-1">
+                View Repository 
+                <svg class="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Project 2: Alpha Stock -->
+        <div class="rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 p-5 flex flex-col justify-between shadow-sm hover:border-indigo-500/50 transition-colors print-shadow-none">
+          <div>
+            <div class="flex items-center justify-between mb-3">
+              <span class="p-2 rounded-lg bg-indigo-50 dark:bg-indigo-950/60 text-indigo-600 dark:text-indigo-400">
+                <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/></svg>
+              </span>
+              <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400">Data & Trading</span>
+            </div>
+            <h3 class="text-base font-bold text-slate-900 dark:text-white mb-2">Alpha Stock Engine</h3>
+            <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed mb-4">
+              Algorithmic financial analysis engine for market trend evaluation, real-time data streaming, and quantitative portfolio indicators.
+            </p>
+          </div>
+          <div class="space-y-3 pt-3 border-t border-slate-100 dark:border-slate-800">
+            <div class="flex flex-wrap gap-1 font-mono text-[10px] text-slate-500 dark:text-slate-400">
+              <span class="bg-slate-100 dark:bg-slate-800 px-1.5 py-0.5 rounded">TypeScript</span>
+              <span class="bg-slate-100 dark:bg-slate-800 px-1.5 py-0.5 rounded">Node.js</span>
+              <span class="bg-slate-100 dark:bg-slate-800 px-1.5 py-0.5 rounded">Financial APIs</span>
+            </div>
+            <div class="flex items-center justify-between text-xs font-medium no-print">
+              <a href="https://github.com/bc1Matin/alpha-stock-v2" target="_blank" rel="noopener" class="text-indigo-600 dark:text-indigo-400 hover:underline flex items-center gap-1">
+                View Repository 
+                <svg class="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Project 3: Discord Radio Bot & Real-Time Media -->
+        <div class="rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 p-5 flex flex-col justify-between shadow-sm hover:border-rose-500/50 transition-colors print-shadow-none">
+          <div>
+            <div class="flex items-center justify-between mb-3">
+              <span class="p-2 rounded-lg bg-rose-50 dark:bg-rose-950/60 text-rose-600 dark:text-rose-400">
+                <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.536 8.464a5 5 0 010 7.072m2.828-9.9a9 9 0 010 12.728M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z"/></svg>
+              </span>
+              <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400">Audio & Bot</span>
+            </div>
+            <h3 class="text-base font-bold text-slate-900 dark:text-white mb-2">Discord Radio Bot</h3>
+            <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed mb-4">
+              Real-time voice stream orchestrator streaming low-latency internet radio broadcasts directly into voice channels with automated state recovery.
+            </p>
+          </div>
+          <div class="space-y-3 pt-3 border-t border-slate-100 dark:border-slate-800">
+            <div class="flex flex-wrap gap-1 font-mono text-[10px] text-slate-500 dark:text-slate-400">
+              <span class="bg-slate-100 dark:bg-slate-800 px-1.5 py-0.5 rounded">JavaScript</span>
+              <span class="bg-slate-100 dark:bg-slate-800 px-1.5 py-0.5 rounded">Node.js</span>
+              <span class="bg-slate-100 dark:bg-slate-800 px-1.5 py-0.5 rounded">Discord.js</span>
+            </div>
+            <div class="flex items-center justify-between text-xs font-medium no-print">
+              <a href="https://github.com/bc1Matin/discord-radio-bot" target="_blank" rel="noopener" class="text-indigo-600 dark:text-indigo-400 hover:underline flex items-center gap-1">
+                View Repository 
+                <svg class="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+              </a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ========================================================
+         EDUCATION & CREDENTIALS
+         ======================================================== -->
+    <section id="education" class="page-break-inside-avoid space-y-6 pt-4">
+      <div>
+        <h2 class="text-2xl font-bold tracking-tight text-slate-900 dark:text-white flex items-center gap-2 font-mono">
+          <span class="text-indigo-600 dark:text-indigo-400">#</span> Academic Background & Philosophy
+        </h2>
+        <p class="text-xs sm:text-sm text-slate-500 dark:text-slate-400 mt-1">
+          Bridging technical engineering fundamentals with deep inquiry into digital freedom, ethics, and decentralization.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        <!-- Degree 1: M.A. in Philosophy -->
+        <div class="rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 p-5 shadow-sm print-shadow-none">
+          <div class="flex items-start justify-between">
+            <div>
+              <h3 class="text-base font-bold text-slate-900 dark:text-white">M.A. in Philosophy</h3>
+              <p class="text-xs text-indigo-600 dark:text-indigo-400 font-mono mt-0.5">Focus on Decentralization, Ethics & Autonomy</p>
+              <p class="text-xs text-slate-600 dark:text-slate-300 mt-3 leading-relaxed">
+                Investigating political philosophy, technology ethics, individual empowerment, and how cryptographic protocols serve as mechanisms for decentralization and human freedom.
+              </p>
+            </div>
+            <span class="text-[11px] font-mono px-2 py-0.5 rounded bg-indigo-50 dark:bg-indigo-950 text-indigo-700 dark:text-indigo-300 border border-indigo-200 dark:border-indigo-800 shrink-0">
+              Master's Degree
+            </span>
+          </div>
+        </div>
+
+        <!-- Degree 2: B.Sc. in Electrical Engineering -->
+        <div class="rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 p-5 shadow-sm print-shadow-none">
+          <div class="flex items-start justify-between">
+            <div>
+              <h3 class="text-base font-bold text-slate-900 dark:text-white">B.Sc. in Electrical Engineering</h3>
+              <p class="text-xs text-emerald-600 dark:text-emerald-400 font-mono mt-0.5">Systems, Hardware & Computation</p>
+              <p class="text-xs text-slate-600 dark:text-slate-300 mt-3 leading-relaxed">
+                Rigorous grounding in systems engineering, circuit analysis, digital signals, telecommunications, and computational logic forming the bedrock for distributed systems development.
+              </p>
+            </div>
+            <span class="text-[11px] font-mono px-2 py-0.5 rounded bg-emerald-50 dark:bg-emerald-950 text-emerald-700 dark:text-emerald-400 border border-emerald-200 dark:border-emerald-800 shrink-0">
+              Bachelor's Degree
+            </span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================
+         WORK EXPERIENCE SECTION
+         ======================================================== -->
+    <section id="experience" class="page-break-inside-avoid space-y-6 pt-4">
+      <div>
+        <h2 class="text-2xl font-bold tracking-tight text-slate-900 dark:text-white flex items-center gap-2 font-mono">
+          <span class="text-indigo-600 dark:text-indigo-400">#</span> Development Journey
+        </h2>
+      </div>
+
+      <div class="relative border-l-2 border-slate-200 dark:border-slate-800 ml-4 sm:ml-6 pl-6 sm:pl-8 space-y-8">
+
+        <!-- Journey 1 -->
+        <div class="relative group">
+          <span class="absolute -left-[31px] sm:-left-[39px] top-1 w-4 h-4 rounded-full bg-white dark:bg-slate-950 border-2 border-indigo-600 dark:border-indigo-400 group-hover:scale-125 transition-transform"></span>
+          <div class="rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 p-5 shadow-sm print-shadow-none">
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1 mb-2">
+              <h3 class="text-base font-bold text-slate-900 dark:text-white">
+                Blockchain Developer & Protocol Researcher
+              </h3>
+              <span class="text-xs font-mono font-medium text-indigo-600 dark:text-indigo-400 bg-indigo-50 dark:bg-indigo-950/60 px-2.5 py-1 rounded-md w-fit">
+                Current
+              </span>
+            </div>
+            <div class="text-xs font-mono text-slate-500 dark:text-slate-400 mb-3">
+              Permaweb Ecosystem (Arweave, AO, HyperBEAM) & Ethereum (EVM)
+            </div>
+            <ul class="text-xs sm:text-sm text-slate-600 dark:text-slate-300 space-y-1.5 list-disc list-inside leading-relaxed mb-4">
+              <li>Architecting decentralized processes on the <strong>AO computer</strong> using <strong>Lua</strong> and <strong>WAO</strong>.</li>
+              <li>Researching distributed consensus, Bitcoin mechanics, and Layer 2 state settlement.</li>
+              <li>Writing and testing smart contracts in <strong>Solidity</strong> with rigorous <strong>Hardhat</strong> simulation pipelines.</li>
+            </ul>
+            <div class="flex flex-wrap gap-1.5">
+              <span class="px-2 py-0.5 rounded text-[10px] font-mono bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300">Arweave/AO</span>
+              <span class="px-2 py-0.5 rounded text-[10px] font-mono bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300">Lua</span>
+              <span class="px-2 py-0.5 rounded text-[10px] font-mono bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300">HyperBEAM</span>
+              <span class="px-2 py-0.5 rounded text-[10px] font-mono bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300">Solidity</span>
+              <span class="px-2 py-0.5 rounded text-[10px] font-mono bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300">Hardhat</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Journey 2 -->
+        <div class="relative group">
+          <span class="absolute -left-[31px] sm:-left-[39px] top-1 w-4 h-4 rounded-full bg-white dark:bg-slate-950 border-2 border-slate-400 dark:border-slate-600 group-hover:scale-125 transition-transform"></span>
+          <div class="rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 p-5 shadow-sm print-shadow-none">
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1 mb-2">
+              <h3 class="text-base font-bold text-slate-900 dark:text-white">
+                Backend & Systems Engineering
+              </h3>
+              <span class="text-xs font-mono font-medium text-slate-600 dark:text-slate-400 bg-slate-100 dark:bg-slate-800 px-2.5 py-1 rounded-md w-fit">
+                Foundation
+              </span>
+            </div>
+            <div class="text-xs font-mono text-slate-500 dark:text-slate-400 mb-3">
+              Modern TypeScript Runtimes, Linux & DevOps
+            </div>
+            <ul class="text-xs sm:text-sm text-slate-600 dark:text-slate-300 space-y-1.5 list-disc list-inside leading-relaxed mb-4">
+              <li>Built reliable server applications and APIs leveraging <strong>NestJS</strong>, <strong>Node.js</strong>, and <strong>Bun</strong>.</li>
+              <li>Configured containerized deployment environments with <strong>Docker</strong> and streamlined <strong>Git</strong> workflows.</li>
+              <li>Maintained personal high-efficiency workstation on <strong>Arch Linux (Omarchy)</strong> utilizing <strong>Neovim</strong> and <strong>Tmux</strong>.</li>
+            </ul>
+            <div class="flex flex-wrap gap-1.5">
+              <span class="px-2 py-0.5 rounded text-[10px] font-mono bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300">TypeScript</span>
+              <span class="px-2 py-0.5 rounded text-[10px] font-mono bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300">NestJS</span>
+              <span class="px-2 py-0.5 rounded text-[10px] font-mono bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300">Bun</span>
+              <span class="px-2 py-0.5 rounded text-[10px] font-mono bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300">Docker</span>
+              <span class="px-2 py-0.5 rounded text-[10px] font-mono bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300">Arch Linux</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ========================================================
+         CONTACT SECTION & FOOTER
+         ======================================================== -->
+    <section id="contact" class="page-break-inside-avoid rounded-2xl bg-gradient-to-br from-indigo-900 via-slate-900 to-slate-950 text-white p-8 sm:p-10 shadow-lg relative overflow-hidden">
+      <!-- Background Ambient Glow -->
+      <div class="absolute -right-20 -bottom-20 w-80 h-80 rounded-full bg-indigo-500/20 blur-3xl pointer-events-none"></div>
+
+      <div class="relative z-10 max-w-2xl space-y-4">
+        <h2 class="text-2xl sm:text-3xl font-extrabold tracking-tight">Let's connect & build the decentralized future.</h2>
+        <p class="text-slate-300 text-xs sm:text-sm leading-relaxed">
+          Whether you're discussing AO autonomous process architectures, smart contract security on EVM, or the philosophical implications of open protocols, my inbox is always open.
+        </p>
+
+        <div class="pt-4 flex flex-wrap items-center gap-3">
+          <a href="mailto:matinasadpour@proton.me" class="px-5 py-2.5 rounded-lg text-xs font-semibold bg-white hover:bg-slate-100 text-slate-900 transition-colors shadow-sm inline-flex items-center gap-2">
+            <svg class="w-4 h-4 text-indigo-600" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+            matinasadpour@proton.me
+          </a>
+          <a href="https://github.com/bc1Matin" target="_blank" rel="noopener" class="px-4 py-2.5 rounded-lg text-xs font-medium bg-slate-800/80 hover:bg-slate-800 text-white border border-slate-700 transition-colors inline-flex items-center gap-2">
+            <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+            github.com/bc1Matin
+          </a>
+          <a href="https://linkedin.com/in/MatinAsadpour" target="_blank" rel="noopener" class="px-4 py-2.5 rounded-lg text-xs font-medium bg-slate-800/80 hover:bg-slate-800 text-white border border-slate-700 transition-colors inline-flex items-center gap-2">
+            <svg class="w-4 h-4 fill-[#0077b5]" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+            LinkedIn Profile
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="pt-6 pb-12 border-t border-slate-200 dark:border-slate-800/80 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-mono text-slate-500 dark:text-slate-400 no-print">
+      <div>
+        © 2026 Matin Asadpour (bc1Matin). Built for GitHub Pages.
+      </div>
+      <div class="flex items-center gap-4">
+        <span class="flex items-center gap-1.5">
+          <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
+          Arweave & AO
+        </span>
+        <span class="flex items-center gap-1.5">
+          <span class="w-2 h-2 rounded-full bg-indigo-500"></span>
+          EVM Solidity
+        </span>
+        <a href="#about" class="hover:underline">Back to top ↑</a>
+      </div>
+    </footer>
+
+  </main>
+
+  <!-- ========================================================
+       CLIENT INTERACTIVITY SCRIPT: THEME ENGINE
+       ======================================================== -->
+  <script>
+    // Theme Switcher Logic (System preference + LocalStorage persistence)
+    const themeToggleBtn = document.getElementById('theme-toggle');
+    const darkIcon = document.getElementById('theme-toggle-dark-icon');
+    const lightIcon = document.getElementById('theme-toggle-light-icon');
+
+    // Check current theme
+    function getPreferredTheme() {
+      const storedTheme = localStorage.getItem('color-theme');
+      if (storedTheme) {
+        return storedTheme;
+      }
+      return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    }
+
+    function applyTheme(theme) {
+      if (theme === 'dark') {
+        document.documentElement.classList.add('dark');
+        darkIcon.classList.add('hidden');
+        lightIcon.classList.remove('hidden');
+      } else {
+        document.documentElement.classList.remove('dark');
+        lightIcon.classList.add('hidden');
+        darkIcon.classList.remove('hidden');
+      }
+      localStorage.setItem('color-theme', theme);
+    }
+
+    // Initialize theme on load
+    applyTheme(getPreferredTheme());
+
+    // Toggle click handler
+    themeToggleBtn.addEventListener('click', () => {
+      const currentTheme = document.documentElement.classList.contains('dark') ? 'dark' : 'light';
+      const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+      applyTheme(newTheme);
+    });
+
+    // Listen to OS theme changes if user hasn't explicitly set preference
+    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
+      if (!localStorage.getItem('color-theme')) {
+        applyTheme(e.matches ? 'dark' : 'light');
+      }
+    });
+  </script>
+</body>
+</html>
